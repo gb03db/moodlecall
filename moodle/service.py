@@ -45,7 +45,7 @@ class Moodle:
         if 'exception' in res:
             raise MoodleException(res['message'])
 
-        return resp.json()
+        return res
 
     def _serialize(self, data):
         res = {}
