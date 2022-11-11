@@ -2,7 +2,7 @@
     Moodle webservice caller Main class
 """
 
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 import logging
 from urllib.parse import quote_plus
 import requests
@@ -43,7 +43,7 @@ class Moodle:
        
         res = resp.json()
 
-        if res is not None and 'exception' in res:
+        if isinstance(res, Mapping) and 'exception' in res:
             raise MoodleException(res['message'])
 
         return res
@@ -51,7 +51,7 @@ class Moodle:
     def _serialize(self, data):
         res = {}
         def _trace(data, path=''):
-            if isinstance(data, dict):
+            if isinstance(data, Mapping):
                 for k,v in data.items():
                     if path=='':
                         _trace(v, k)
