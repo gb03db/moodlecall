@@ -31,7 +31,7 @@ class Moodle:
                 self._url, params=params,
                 headers={'Content-type': 'application/x-www-form-urlencoded'},
                 data=self._serialize(data),
-                timeout=self._timeout
+                timeout=self._timeout,
             )
 
         _logger.debug('Response status code: %d', resp.status_code)
@@ -42,7 +42,8 @@ class Moodle:
         resp.raise_for_status()
        
         res = resp.json()
-        if 'exception' in res:
+
+        if res is not None and 'exception' in res:
             raise MoodleException(res['message'])
 
         return res
