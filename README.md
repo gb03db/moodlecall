@@ -19,6 +19,10 @@ res = moodle('core_course_create_courses', {'courses': [{
     'shortname': 'bestcourse',
     'fullname': 'My best course',
     'categoryid': 1,
+}, {
+    'shortname': 'dummycourse',
+    'fullname': 'My dummy course',
+    'categoryid': 1,
 }]})
 print(res)
 
