@@ -40,11 +40,11 @@ class Moodle:
             _logger.error('Error on request, data: %s', resp.text)
 
         resp.raise_for_status()
-       
+
         res = resp.json()
 
         if isinstance(res, Mapping) and 'exception' in res:
-            raise MoodleException(res['message'])
+            raise MoodleException(res)
 
         return res
 

@@ -14,7 +14,7 @@ moodle = Moodle(url, token)
 # Moodle site info:
 print(moodle('core_webservice_get_site_info'))
 
-# Create course:
+# Create courses:
 res = moodle('core_course_create_courses', {'courses': [{
     'shortname': 'bestcourse',
     'fullname': 'My best course',
